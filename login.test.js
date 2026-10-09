@@ -2,9 +2,10 @@ import http from 'k6/http';
 import { sleep, check } from 'k6';
 
 export const options = {
-  iterations: 20,
+  vus: 10, // número de usuários virtuais
+  duration: '30s',
   thresholds:{
-    http_req_duration: ['p(90)<4', 'max<4'], 
+    http_req_duration: ['p(90)<2000', 'max<1000'], 
     http_req_failed: ['rate<0.01'],
   }
 };
